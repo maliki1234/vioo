@@ -19,13 +19,13 @@ export default function page() {
         const dtparse = JSON.parse(dt)
         const dt2 = localStorage.getItem("favoriteNumber2")
         const dtparse2: Cut[] = JSON.parse(dt2)
-        // console.log(dtparse2)
+        
         const cuts : Cut[] = JSON.parse(dt2)
         if (dt && cuts) {
             const optimizedCuts = optimizeGlassCutting(dtparse.sheetWidth, dtparse.sheetHeight, cuts);
             setdata(optimizedCuts)
         }
-        // console.log(optimizedCuts)
+       
         
         
     
@@ -43,11 +43,11 @@ export default function page() {
     <div className='px-4'>
         {
             data.length > 0 && data.map((cut, index) => <p className=''>
-                {`${index + 1 }. ${cut.width} * ${cut.height}, ${cut.y} , ${cut.x}`}
+                {`${index + 1 }. ${cut.width} * ${cut.height}, y:${cut.y} , x:${cut.x}`}
             </p>)
         }
 
-        <Button onClick={()=>clearlocalStorage()}>clear</Button>
+        <Button onClick={()=>clearlocalStorage()} className='my-4'>clear</Button>
     </div>
   )
 }
